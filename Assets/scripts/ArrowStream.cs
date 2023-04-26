@@ -10,6 +10,8 @@ public class ArrowStream : MonoBehaviour
     private Queue<float> perfectTimes;
     private Queue<float> arrowStartTimes;
 
+    [SerializeField] Transform targetSpot;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,15 +23,13 @@ public class ArrowStream : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(perfectTimes.Count > 0)
+        if(arrows.Count > 0 && arrows.Peek().transform.position.y < targetSpot.position.y)
         {
-            float lifespan = 2 * (perfectTimes.Peek() - arrowStartTimes.Peek());
-            float dTime = Clock.time - perfectTimes.Peek();
-
-            if(dTime > lifespan/4) 
+            float distance = Vector2.Distance(arrows.Peek().transform.position, targetSpot.position);
+            if (distance >= 1.3f)
             {
+                Debug.Log("MISS");
                 RemoveArrow();
-                Debug.Log("miss");
             }
         }
     }
@@ -52,27 +52,23 @@ public class ArrowStream : MonoBehaviour
     {
         if(perfectTimes.Count > 0)
         {
-            float timeToPerfect = (perfectTimes.Peek() - arrowStartTimes.Peek()) * 2;
-            float lifeTime = Clock.time - arrowStartTimes.Peek();
-            float dTime = Math.Abs(timeToPerfect - lifeTime);
+            float distance = Vector2.Distance(arrows.Peek().transform.position, targetSpot.position);
 
-            Debug.Log(dTime + " " + timeToPerfect);
-            if(dTime < timeToPerfect/4)
+            if(distance < 2)
             {
-                if(dTime < timeToPerfect/40)
-                {
-                    Debug.Log("PERFECT +");
-                    Debug.Log(timeToPerfect + " " + dTime);
-                }
-                else if(dTime < timeToPerfect/30)
+                if(distance < .15f)
                 {
                     Debug.Log("PERFECT");
                 }
-                else if(dTime < timeToPerfect/12)
+                else if(distance < .4f)
+                {
+                    Debug.Log("EXCELLENT");
+                }
+                else if(distance < .8f)
                 {
                     Debug.Log("GREAT");
                 }
-                else if(dTime < timeToPerfect/6)
+                else if(distance < 1.3f)
                 {
                     Debug.Log("NICE");
                 }
@@ -81,7 +77,7 @@ public class ArrowStream : MonoBehaviour
                     Debug.Log("MISS");
                 }
 
-                //RemoveArrow();
+                RemoveArrow();
             }
         }
         //Checks clock and time for valid input
