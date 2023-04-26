@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class LevelArrows : MonoBehaviour
 {
-
-    public static int arrowSpeed;
-    public int levelArrowSpeed;
     public static float timeToPerfect;
     [SerializeField] float timeUntilPerfect;
 
@@ -32,8 +29,6 @@ public class LevelArrows : MonoBehaviour
 
         levelStarted = false;
         clock = GameObject.Find("Clock").GetComponent<Clock>();
-
-        arrowSpeed = levelArrowSpeed;
 
         StartCoroutine(Pause());
 

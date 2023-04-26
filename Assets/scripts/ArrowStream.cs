@@ -7,19 +7,31 @@ public class ArrowStream : MonoBehaviour
 {
     public GameObject arrow;
     private Queue<Arrow> arrows;
-    private Queue<float> times;
+    private Queue<float> perfectTimes;
+    private Queue<float> arrowStartTimes;
 
     // Start is called before the first frame update
     void Start()
     {
         arrows = new Queue<Arrow>();
-        times = new Queue<float>();
+        perfectTimes = new Queue<float>();
+        arrowStartTimes = new Queue<float>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(perfectTimes.Count > 0)
+        {
+            float lifespan = 2 * (perfectTimes.Peek() - arrowStartTimes.Peek());
+            float dTime = Clock.time - perfectTimes.Peek();
 
+            if(dTime > lifespan/4) 
+            {
+                RemoveArrow();
+                Debug.Log("miss");
+            }
+        }
     }
 
     public void AddArrow(float arrowLifeSpan)
@@ -27,8 +39,10 @@ public class ArrowStream : MonoBehaviour
         Transform newArrowT = Instantiate(arrow, transform).transform;
         Arrow newArrow = newArrowT.GetComponent<Arrow>();
         arrows.Enqueue(newArrow);
+
         float newTime = Clock.time + arrowLifeSpan;
-        times.Enqueue(newTime);
+        perfectTimes.Enqueue(newTime);
+        arrowStartTimes.Enqueue(Clock.time);
 
         newArrowT.position = new Vector2(newArrowT.position.x, -3.5f + 10);
         newArrow.StartArrow(arrowLifeSpan * 2);
@@ -36,26 +50,29 @@ public class ArrowStream : MonoBehaviour
 
     public void PressedArrowKey()
     {
-        if(times.Count > 0)
+        if(perfectTimes.Count > 0)
         {
-            float time = times.Peek();
-            float dTime = Math.Abs(Clock.time - time);
-            if(dTime < time/4)
+            float timeToPerfect = (perfectTimes.Peek() - arrowStartTimes.Peek()) * 2;
+            float lifeTime = Clock.time - arrowStartTimes.Peek();
+            float dTime = Math.Abs(timeToPerfect - lifeTime);
+
+            Debug.Log(dTime + " " + timeToPerfect);
+            if(dTime < timeToPerfect/4)
             {
-                Debug.Log("hi");
-                if(dTime < time/40)
+                if(dTime < timeToPerfect/40)
                 {
                     Debug.Log("PERFECT +");
+                    Debug.Log(timeToPerfect + " " + dTime);
                 }
-                else if(dTime < time/30)
+                else if(dTime < timeToPerfect/30)
                 {
                     Debug.Log("PERFECT");
                 }
-                else if(dTime < time/12)
+                else if(dTime < timeToPerfect/12)
                 {
                     Debug.Log("GREAT");
                 }
-                else if(dTime < time/6)
+                else if(dTime < timeToPerfect/6)
                 {
                     Debug.Log("NICE");
                 }
@@ -64,15 +81,21 @@ public class ArrowStream : MonoBehaviour
                     Debug.Log("MISS");
                 }
 
-                Destroy(arrows.Peek().gameObject);
-                arrows.Dequeue();
-                times.Dequeue();
+                //RemoveArrow();
             }
         }
         //Checks clock and time for valid input
         //if (clock.time is within certain time of queues first element) Add points
         //else if (clock.time is within another certain amounf of time) missed
         //Dequeue first time and arrow 
+    }
+
+    private void RemoveArrow()
+    {
+        Destroy(arrows.Peek().gameObject);
+        arrows.Dequeue();
+        perfectTimes.Dequeue();
+        arrowStartTimes.Dequeue();
     }
 
 }
