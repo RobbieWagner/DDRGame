@@ -10,6 +10,8 @@ public class ArrowStream : MonoBehaviour
     private Queue<float> perfectTimes;
     private Queue<float> arrowStartTimes;
 
+    [SerializeField] PlunderStatistics plunderStatistics;
+
     [SerializeField] Transform targetSpot;
 
     // Start is called before the first frame update
@@ -59,22 +61,27 @@ public class ArrowStream : MonoBehaviour
                 if(distance < .15f)
                 {
                     Debug.Log("PERFECT");
+                    plunderStatistics.ChangeStatistics(0);
                 }
                 else if(distance < .4f)
                 {
                     Debug.Log("EXCELLENT");
+                    plunderStatistics.ChangeStatistics(1);
                 }
                 else if(distance < .8f)
                 {
                     Debug.Log("GREAT");
+                    plunderStatistics.ChangeStatistics(2);
                 }
                 else if(distance < 1.3f)
                 {
                     Debug.Log("NICE");
+                    plunderStatistics.ChangeStatistics(3);
                 }
                 else
                 {
                     Debug.Log("MISS");
+                    plunderStatistics.ChangeStatistics(4);
                 }
 
                 RemoveArrow();
