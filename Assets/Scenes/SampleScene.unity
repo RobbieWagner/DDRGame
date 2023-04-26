@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 950093690}
   - component: {fileID: 950093694}
   - component: {fileID: 950093695}
+  - component: {fileID: 950093696}
   m_Layer: 5
   m_Name: DDRMachine
   m_TagString: Untagged
@@ -426,27 +427,24 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6e5013fa-a65d-403e-b16d-abfd275621c5
     m_ActionName: MusicArrowKeys/LeftArrow[/Keyboard/a,/Keyboard/leftArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 950093694}
-        m_TargetAssemblyTypeName: MusicArrowKeyInput, Assembly-CSharp
-        m_MethodName: OnLeftArrowReleased
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: c8c1e93b-6219-4204-86e0-7a1c2e75bdaf
-    m_ActionName: MusicArrowKeys/LeftArrowReleased[/Keyboard/a,/Keyboard/leftArrow]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: MusicArrowKeys
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 519420031}
+--- !u!114 &950093696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950093689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b5f7b2e5a30e1a44941f81d612bc3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilPerfect: 0
 --- !u!224 &1839756122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 120584496456735568, guid: 51edd0cc2da5f6a43b67cfedac44ea10, type: 3}
