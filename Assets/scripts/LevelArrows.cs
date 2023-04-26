@@ -5,6 +5,8 @@ using UnityEngine;
 public class LevelArrows : MonoBehaviour
 {
 
+    public static int arrowSpeed;
+    public int levelArrowSpeed;
     public static float timeToPerfect;
     [SerializeField] float timeUntilPerfect;
 
@@ -31,6 +33,8 @@ public class LevelArrows : MonoBehaviour
         levelStarted = false;
         clock = GameObject.Find("Clock").GetComponent<Clock>();
 
+        arrowSpeed = levelArrowSpeed;
+
         StartCoroutine(Pause());
 
         for(int i = 0; i < levelArrows.Count; i++)
@@ -44,11 +48,11 @@ public class LevelArrows : MonoBehaviour
     void Update()
     {
         if(arrows.Count == 0) EndLevel();
-        else if(Clock.time == times.Peek() - timeToPerfect)
+        else if(Clock.time >= times.Peek() - timeToPerfect)
         {
             ArrowDeployment arrowDeployment = arrows.Dequeue();
             times.Dequeue();
-            arrowDeployment.Deploy(arrowStreams);
+            arrowDeployment.Deploy(arrowStreams, timeUntilPerfect);
         } 
     }
 
@@ -69,6 +73,6 @@ public class LevelArrows : MonoBehaviour
 
     void EndLevel()
     {
-        Debug.Log("end of level");
+        //Debug.Log("end of level");
     }
 }

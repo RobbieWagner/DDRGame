@@ -23,6 +23,8 @@ public class MusicArrowKeyInput : MonoBehaviour
     [SerializeField] private SpriteRenderer[] arrowKeys;
     [SerializeField] private Color[] arrowKeyColors;
 
+    [SerializeField] private ArrowStream[] arrowStreamsLUDR;
+
     private bool[] isKeyPressed;
 
     // Start is called before the first frame update
@@ -43,6 +45,7 @@ public class MusicArrowKeyInput : MonoBehaviour
         {
             ChangeArrowColor(arrowKeys[0], arrowKeyColors[(int) ArrowKeyConditions.LeftActive]);
             isKeyPressed[0] = true;
+            arrowStreamsLUDR[0].PressedArrowKey();
         }
         else if (context.canceled)
         {
@@ -57,6 +60,7 @@ public class MusicArrowKeyInput : MonoBehaviour
         {
             ChangeArrowColor(arrowKeys[1], arrowKeyColors[(int) ArrowKeyConditions.UpActive]);
             isKeyPressed[1] = true;
+            arrowStreamsLUDR[1].PressedArrowKey();
         }
         else if (context.canceled)
         {
@@ -71,6 +75,7 @@ public class MusicArrowKeyInput : MonoBehaviour
         {
             ChangeArrowColor(arrowKeys[2], arrowKeyColors[(int) ArrowKeyConditions.DownActive]);
             isKeyPressed[2] = true;
+            arrowStreamsLUDR[2].PressedArrowKey();
         }
         else if (context.canceled)
         {
@@ -85,6 +90,7 @@ public class MusicArrowKeyInput : MonoBehaviour
         {
             ChangeArrowColor(arrowKeys[3], arrowKeyColors[(int) ArrowKeyConditions.RightActive]);
             isKeyPressed[3] = true;
+            arrowStreamsLUDR[3].PressedArrowKey();
         }
         else if (context.canceled)
         {

@@ -35,6 +35,7 @@ public class Clock : MonoBehaviour
         {
             yield return new WaitForSeconds(.01f);
             time += .01f;
+            //Debug.Log(time);
         }
 
         StopCoroutine(TrackTime());

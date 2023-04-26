@@ -422,6 +422,11 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 0.49019608, a: 1}
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 0.49019608, g: 1, b: 0, a: 1}
+  arrowStreamsLUDR:
+  - {fileID: 1271347179}
+  - {fileID: 858558422}
+  - {fileID: 1454906480}
+  - {fileID: 852089358}
 --- !u!114 &950093695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,19 +533,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b5f7b2e5a30e1a44941f81d612bc3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilPerfect: 3
+  levelArrowSpeed: 2
+  timeUntilPerfect: 5
   arrowStreams:
   - {fileID: 1271347179}
   - {fileID: 858558422}
   - {fileID: 1454906480}
   - {fileID: 852089358}
+  arrowLifeSpan: 5
   levelArrows:
   - {fileID: 8805567080781615773, guid: dc31793c9beab8149bf6279f7988049a, type: 3}
   - {fileID: 8805567080781615773, guid: dc31793c9beab8149bf6279f7988049a, type: 3}
   - {fileID: 8805567080781615773, guid: 3a74ab8f9abe71240bee295baa98ddce, type: 3}
   timesList:
-  - 3
-  - 6
+  - 5
+  - 7
   - 9
 --- !u!1 &1221710115
 GameObject:
