@@ -20,7 +20,7 @@ public class MusicArrowKeyInput : MonoBehaviour
 
     }
 
-    [SerializeField] private Image[] arrowKeys;
+    [SerializeField] private SpriteRenderer[] arrowKeys;
     [SerializeField] private Color[] arrowKeyColors;
 
     private bool[] isKeyPressed;
@@ -94,5 +94,5 @@ public class MusicArrowKeyInput : MonoBehaviour
     }
 
 
-    private void ChangeArrowColor(Image arrowKey, Color color) { arrowKey.color = color;}
+    private void ChangeArrowColor(SpriteRenderer arrowKey, Color color) { arrowKey.color = color;}
 }

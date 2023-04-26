@@ -23,11 +23,14 @@ public class ArrowStream : MonoBehaviour
 
     public void AddArrow()
     {
-        Arrow newArrow = Instantiate(arrow, transform).GetComponent<Arrow>();
+        Transform newArrowT = Instantiate(arrow, transform).transform;
+        Arrow newArrow = newArrowT.GetComponent<Arrow>();
         arrows.Enqueue(newArrow);
         float newTime = Clock.time;
         times.Enqueue(newTime);
-        //Get newArrow position
+
+        newArrowT.position = new Vector2(newArrowT.position.x, -3.5f + 10);
+        newArrow.StartArrow();
         //Lerp new Arrow to point twice the distance they are from "perfect spot". This will let the arrow move offscreen, and make timing perfect placement easier.
     }
 

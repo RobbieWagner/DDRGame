@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class ArrowDeployment : MonoBehaviour
 {
     public bool[] displayLeftUpDownRight;
-    public ArrowStream[] arrowStreams;
 
-    public void Deploy()
+    public void Deploy(ArrowStream[] arrowStreams)
     {
         for(int i = 0; i < displayLeftUpDownRight.Length; i++)
         {
