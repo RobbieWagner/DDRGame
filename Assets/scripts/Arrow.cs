@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public float unitsAbovePerfectSpot;
-    float arrowTime;
+    bool moving;
+    Vector3 startingPosition, positionToGoTo;
+    float arrowBeat, arrowPauseTime, arrowSpeed;
 
-    ArrowStream parentArrowStream;
-
-    public void StartArrow(float timeToLive)
+    void Awake()
     {
-        arrowTime = timeToLive;
-        transform.position = new Vector2(transform.position.x, -3.5f + unitsAbovePerfectSpot);
-        StartCoroutine(MoveDown());
+        moving = false;
     }
 
-    private IEnumerator MoveDown()
+    public void StartArrow(float beat, float pauseTime, float speed, Vector3 startPos, Vector3 endPos)
     {
-        Vector2 startPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 positionToGoTo = new Vector2(transform.position.x, -3.5f - unitsAbovePerfectSpot);
-        float time = 0;
-        float journeyLength = Vector2.Distance(transform.position, positionToGoTo);
+        arrowBeat = beat;
+        arrowPauseTime = pauseTime;
+        arrowSpeed = speed;
 
-        while(time < arrowTime)
+        startingPosition = startPos;
+        positionToGoTo = endPos;
+
+        moving = true;
+    }
+
+    void Update()
+    {
+        if(moving)
         {
-            yield return null;
-            transform.position = Vector2.Lerp(startPosition, positionToGoTo, time/arrowTime);
-            time += Time.deltaTime;
-            //Debug.Log(time/arrowTime);
+            transform.position -= new Vector3(0, arrowSpeed * 2 * Time.deltaTime, 0);
         }
-
-        StopCoroutine(MoveDown());
     }
+
 }

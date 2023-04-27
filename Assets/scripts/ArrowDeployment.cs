@@ -11,7 +11,7 @@ public class ArrowDeployment : MonoBehaviour
     {
         for(int i = 0; i < displayLeftUpDownRight.Length; i++)
         {
-            if(displayLeftUpDownRight[i]) arrowStreams[i].AddArrow(arrowLifeSpan);
+            //if(displayLeftUpDownRight[i]) arrowStreams[i].AddArrow(arrowLifeSpan);
         }
     }
 }

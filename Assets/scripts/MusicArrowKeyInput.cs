@@ -41,13 +41,16 @@ public class MusicArrowKeyInput : MonoBehaviour
 
     public void OnLeftArrow(InputAction.CallbackContext context)
     {
-        if (context.started && !isKeyPressed[0])
+        if(!PauseMenu.paused)
         {
-            ChangeArrowColor(arrowKeys[0], arrowKeyColors[(int) ArrowKeyConditions.LeftActive]);
-            isKeyPressed[0] = true;
-            arrowStreamsLUDR[0].PressedArrowKey();
+            if (context.started && !isKeyPressed[0])
+            {
+                ChangeArrowColor(arrowKeys[0], arrowKeyColors[(int) ArrowKeyConditions.LeftActive]);
+                isKeyPressed[0] = true;
+                arrowStreamsLUDR[0].PressedArrowKey();
+            }
         }
-        else if (context.canceled)
+        if (context.canceled)
         {
             ChangeArrowColor(arrowKeys[0], arrowKeyColors[(int) ArrowKeyConditions.LeftInactive]);
             isKeyPressed[0] = false;
@@ -56,13 +59,16 @@ public class MusicArrowKeyInput : MonoBehaviour
     
     public void OnUpArrow(InputAction.CallbackContext context)
     {
-        if (context.started && !isKeyPressed[1])
+        if(!PauseMenu.paused)
         {
-            ChangeArrowColor(arrowKeys[1], arrowKeyColors[(int) ArrowKeyConditions.UpActive]);
-            isKeyPressed[1] = true;
-            arrowStreamsLUDR[1].PressedArrowKey();
+            if (context.started && !isKeyPressed[1])
+            {
+                ChangeArrowColor(arrowKeys[1], arrowKeyColors[(int) ArrowKeyConditions.UpActive]);
+                isKeyPressed[1] = true;
+                arrowStreamsLUDR[1].PressedArrowKey();
+            }
         }
-        else if (context.canceled)
+        if (context.canceled)
         {
             ChangeArrowColor(arrowKeys[1], arrowKeyColors[(int) ArrowKeyConditions.UpInactive]);
             isKeyPressed[1] = false;
@@ -71,13 +77,16 @@ public class MusicArrowKeyInput : MonoBehaviour
 
     public void OnDownArrow(InputAction.CallbackContext context)
     {
-        if (context.started && !isKeyPressed[2])
+        if(!PauseMenu.paused)
         {
-            ChangeArrowColor(arrowKeys[2], arrowKeyColors[(int) ArrowKeyConditions.DownActive]);
-            isKeyPressed[2] = true;
-            arrowStreamsLUDR[2].PressedArrowKey();
+            if (context.started && !isKeyPressed[2])
+            {
+                ChangeArrowColor(arrowKeys[2], arrowKeyColors[(int) ArrowKeyConditions.DownActive]);
+                isKeyPressed[2] = true;
+                arrowStreamsLUDR[2].PressedArrowKey();
+            }
         }
-        else if (context.canceled)
+        if (context.canceled)
         {
             ChangeArrowColor(arrowKeys[2], arrowKeyColors[(int) ArrowKeyConditions.DownInactive]);
             isKeyPressed[2] = false;
@@ -86,13 +95,16 @@ public class MusicArrowKeyInput : MonoBehaviour
 
     public void OnRightArrow(InputAction.CallbackContext context)
     {
-        if (context.started && !isKeyPressed[3])
+        if(!PauseMenu.paused)
         {
-            ChangeArrowColor(arrowKeys[3], arrowKeyColors[(int) ArrowKeyConditions.RightActive]);
-            isKeyPressed[3] = true;
-            arrowStreamsLUDR[3].PressedArrowKey();
+            if (context.started && !isKeyPressed[3])
+            {
+                ChangeArrowColor(arrowKeys[3], arrowKeyColors[(int) ArrowKeyConditions.RightActive]);
+                isKeyPressed[3] = true;
+                arrowStreamsLUDR[3].PressedArrowKey();
+            }
         }
-        else if (context.canceled)
+        if (context.canceled)
         {
             ChangeArrowColor(arrowKeys[3], arrowKeyColors[(int) ArrowKeyConditions.RightInactive]);
             isKeyPressed[3] = false;

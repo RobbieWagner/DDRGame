@@ -7,8 +7,6 @@ public class ArrowStream : MonoBehaviour
 {
     public GameObject arrow;
     private Queue<Arrow> arrows;
-    private Queue<float> perfectTimes;
-    private Queue<float> arrowStartTimes;
 
     [SerializeField] int arrowDirection;
 
@@ -16,12 +14,12 @@ public class ArrowStream : MonoBehaviour
 
     [SerializeField] Transform targetSpot;
 
+    [SerializeField] float maxDistanceUnderTarget = 1.3f;
+
     // Start is called before the first frame update
     void Start()
     {
         arrows = new Queue<Arrow>();
-        perfectTimes = new Queue<float>();
-        arrowStartTimes = new Queue<float>();
     }
 
     // Update is called once per frame
@@ -30,7 +28,7 @@ public class ArrowStream : MonoBehaviour
         if(arrows.Count > 0 && arrows.Peek().transform.position.y < targetSpot.position.y)
         {
             float distance = Vector2.Distance(arrows.Peek().transform.position, targetSpot.position);
-            if (distance >= 1.3f)
+            if (distance >= maxDistanceUnderTarget)
             {
                 RemoveArrow();
                 plunderStatistics.ChangeStatistics(4, arrowDirection);
@@ -38,23 +36,20 @@ public class ArrowStream : MonoBehaviour
         }
     }
 
-    public void AddArrow(float arrowLifeSpan)
+    public void AddArrow(float beat, float pauseTime, float speed)
     {
-        Transform newArrowT = Instantiate(arrow, transform).transform;
+        Transform newArrowT = Instantiate(arrow, targetSpot).transform;
+        Vector3 positionOffset = new Vector3(0, speed * pauseTime, 0);
+
+        newArrowT.position = newArrowT.position + positionOffset + new Vector3(0, beat * speed, 0);
         Arrow newArrow = newArrowT.GetComponent<Arrow>();
         arrows.Enqueue(newArrow);
-
-        float newTime = Clock.time + arrowLifeSpan;
-        perfectTimes.Enqueue(newTime);
-        arrowStartTimes.Enqueue(Clock.time);
-
-        newArrowT.position = new Vector2(newArrowT.position.x, -3.5f + 10);
-        newArrow.StartArrow(arrowLifeSpan * 2);
+        newArrow.StartArrow(beat, pauseTime, speed, newArrowT.position, targetSpot.position - new Vector3(0, maxDistanceUnderTarget + .2f, 0));
     }
 
     public void PressedArrowKey()
     {
-        if(perfectTimes.Count > 0)
+        if(arrows.Count > 0)
         {
             float distance = Vector2.Distance(arrows.Peek().transform.position, targetSpot.position);
 
@@ -69,18 +64,11 @@ public class ArrowStream : MonoBehaviour
                 RemoveArrow();
             }
         }
-        //Checks clock and time for valid input
-        //if (clock.time is within certain time of queues first element) Add points
-        //else if (clock.time is within another certain amounf of time) missed
-        //Dequeue first time and arrow 
     }
 
     private void RemoveArrow()
     {
         Destroy(arrows.Peek().gameObject);
         arrows.Dequeue();
-        perfectTimes.Dequeue();
-        arrowStartTimes.Dequeue();
     }
-
 }
