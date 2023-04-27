@@ -19,6 +19,13 @@ public class Clock : MonoBehaviour
         StartCoroutine(TrackTime());
     }
 
+    public void StartClock(float startTime)
+    {
+        trackingTime = true;
+        time = startTime;
+        StartCoroutine(TrackTime());
+    }
+
     public void StopClock()
     {
         trackingTime = false;

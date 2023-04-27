@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelArrows : MonoBehaviour
+public class Level : MonoBehaviour
 {
-    public static float timeToPerfect;
+    public float timeToPerfect;
     [SerializeField] float timeUntilPerfect;
 
     [SerializeField] ArrowStream[] arrowStreams;
@@ -18,6 +18,8 @@ public class LevelArrows : MonoBehaviour
     Clock clock;
 
     private bool levelStarted;
+
+    [SerializeField] AudioSource[] music;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +56,8 @@ public class LevelArrows : MonoBehaviour
     public void StartLevel()
     {
         levelStarted = true;
-        clock.StartClock();
+        clock.StartClock(times.Peek() - timeToPerfect);
+        for(int i = 0; i < music.Length; i++) music[i].Play();
     }
 
     IEnumerator Pause()
