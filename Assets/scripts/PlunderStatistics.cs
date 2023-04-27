@@ -13,6 +13,7 @@ public class PlunderStatistics : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI accuracyText;
+    [SerializeField] TextMeshProUGUI streakText;
 
     [SerializeField] Color[] accuracyColors;
 
@@ -82,5 +83,6 @@ public class PlunderStatistics : MonoBehaviour
         }
 
         scoreText.text = "Score: " + score;
+        streakText.text = "streak: " + streak;
     }
 }
