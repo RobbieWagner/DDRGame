@@ -12,7 +12,7 @@ public class PlunderStatistics : MonoBehaviour
     int perfects, excellents, greats, nices, misses;
 
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI accuracyText;
+    [SerializeField] TextMeshProUGUI[] accuracyTexts;
     [SerializeField] TextMeshProUGUI streakText;
 
     [SerializeField] Color[] accuracyColors;
@@ -32,54 +32,54 @@ public class PlunderStatistics : MonoBehaviour
         misses = 0;
 
         scoreText.text = "Score: 0";
-        accuracyText.text = "";
+        for(int i = 0; i < accuracyTexts.Length; i++) accuracyTexts[i].text = "";
     }
 
-    public void ChangeStatistics(int accuracy)
+    public void ChangeStatistics(int accuracy, int arrowDirection)
     {
         if(accuracy == (int) Accuracy.Perfect)
         {
             perfects++;
             streak++;
 
-            score += streak * 2 + 100;
-            accuracyText.text = "PERFECT";
-            accuracyText.color = accuracyColors[(int) Accuracy.Perfect];
+            score += streak * 2 + 5;
+            accuracyTexts[arrowDirection].text = "PERFECT";
+            accuracyTexts[arrowDirection].color = accuracyColors[(int) Accuracy.Perfect];
         }
         else if(accuracy == (int) Accuracy.Excellent)
         {  
             excellents++;
             streak++;
 
-            score += streak + 75;
-            accuracyText.text = "EXCELLENT";
-            accuracyText.color = accuracyColors[(int) Accuracy.Excellent];
+            score += streak + 3;
+            accuracyTexts[arrowDirection].text = "EXCELLENT";
+            accuracyTexts[arrowDirection].color = accuracyColors[(int) Accuracy.Excellent];
         }
         else if(accuracy == (int) Accuracy.Great)
         {
             greats++;
             streak++;
 
-            score += streak + 50;
-            accuracyText.text = "GREAT";
-            accuracyText.color = accuracyColors[(int) Accuracy.Great];
+            score += streak + 2;
+            accuracyTexts[arrowDirection].text = "GREAT";
+            accuracyTexts[arrowDirection].color = accuracyColors[(int) Accuracy.Great];
         }
         else if(accuracy == (int) Accuracy.Nice)
         {
             nices++;
             streak++;
 
-            score += streak + 25;
-            accuracyText.text = "NICE";
-            accuracyText.color = accuracyColors[(int) Accuracy.Nice];
+            score += streak + 1;
+            accuracyTexts[arrowDirection].text = "NICE";
+            accuracyTexts[arrowDirection].color = accuracyColors[(int) Accuracy.Nice];
         }
         else if(accuracy == (int) Accuracy.Miss)
         {
             misses++;
             streak = 0;
 
-            accuracyText.text = "miss";
-            accuracyText.color = accuracyColors[(int) Accuracy.Miss];
+            accuracyTexts[arrowDirection].text = "miss";
+            accuracyTexts[arrowDirection].color = accuracyColors[(int) Accuracy.Miss];
         }
 
         scoreText.text = "Score: " + score;

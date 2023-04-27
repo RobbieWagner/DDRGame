@@ -10,6 +10,8 @@ public class ArrowStream : MonoBehaviour
     private Queue<float> perfectTimes;
     private Queue<float> arrowStartTimes;
 
+    [SerializeField] int arrowDirection;
+
     [SerializeField] PlunderStatistics plunderStatistics;
 
     [SerializeField] Transform targetSpot;
@@ -30,8 +32,8 @@ public class ArrowStream : MonoBehaviour
             float distance = Vector2.Distance(arrows.Peek().transform.position, targetSpot.position);
             if (distance >= 1.3f)
             {
-                Debug.Log("MISS");
                 RemoveArrow();
+                plunderStatistics.ChangeStatistics(4, arrowDirection);
             }
         }
     }
@@ -58,31 +60,11 @@ public class ArrowStream : MonoBehaviour
 
             if(distance < 2)
             {
-                if(distance < .15f)
-                {
-                    Debug.Log("PERFECT");
-                    plunderStatistics.ChangeStatistics(0);
-                }
-                else if(distance < .4f)
-                {
-                    Debug.Log("EXCELLENT");
-                    plunderStatistics.ChangeStatistics(1);
-                }
-                else if(distance < .8f)
-                {
-                    Debug.Log("GREAT");
-                    plunderStatistics.ChangeStatistics(2);
-                }
-                else if(distance < 1.3f)
-                {
-                    Debug.Log("NICE");
-                    plunderStatistics.ChangeStatistics(3);
-                }
-                else
-                {
-                    Debug.Log("MISS");
-                    plunderStatistics.ChangeStatistics(4);
-                }
+                if(distance < .15f) {plunderStatistics.ChangeStatistics(0, arrowDirection);}
+                else if(distance < .4f) {plunderStatistics.ChangeStatistics(1, arrowDirection);}
+                else if(distance < .8f) {plunderStatistics.ChangeStatistics(2, arrowDirection);}
+                else if(distance < 1.3f) {plunderStatistics.ChangeStatistics(3, arrowDirection);}
+                else {plunderStatistics.ChangeStatistics(4, arrowDirection);}
 
                 RemoveArrow();
             }
