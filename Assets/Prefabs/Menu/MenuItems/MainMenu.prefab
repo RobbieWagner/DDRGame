@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3913408674384595617}
   - component: {fileID: 3913408674384595614}
   - component: {fileID: 8196502650764263315}
-  - component: {fileID: -9211490451579196306}
   - component: {fileID: -8306316946115371686}
   m_Layer: 5
   m_Name: MainMenu
@@ -136,7 +135,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -9211490451579196306}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButtonSounds, Assembly-CSharp
         m_MethodName: PlaySelectionSound
         m_Mode: 1
@@ -161,18 +160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuScene: MainMenu
---- !u!114 &-9211490451579196306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3913408674384595612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c617d7a37ef306b40ae709abe07eff78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-8306316946115371686
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -49,7 +49,7 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(levelStarted && !music[0].isPlaying) 
+        if(!PauseMenu.paused && levelStarted && !music[0].isPlaying) 
         {
             levelStarted = false;
             EndLevel();
@@ -74,10 +74,10 @@ public class Level : MonoBehaviour
 
     public void StartLevel()
     {
-        levelStarted = true;
         clock.StartClock(times.Peek() - tempo);
         for(int i = 0; i < music.Length; i++) 
         music[i].Play();
+        levelStarted = true;
     }
 
     IEnumerator Pause()
