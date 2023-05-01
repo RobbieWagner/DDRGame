@@ -123,8 +123,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LoadGameMenuItem, Assembly-CSharp
+      - m_Target: {fileID: 2996045945581857723}
+        m_TargetAssemblyTypeName: SettingsMenuItem, Assembly-CSharp
         m_MethodName: OnSelectMenuItem
         m_Mode: 1
         m_Arguments:

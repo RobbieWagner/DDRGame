@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 3816273259032634687}
   - component: {fileID: 3816273259032634686}
   - component: {fileID: 3816273259032634625}
-  - component: {fileID: 4987372697092614644}
+  - component: {fileID: 7335809886181584150}
   - component: {fileID: -6174628971161531209}
   m_Layer: 5
   m_Name: Play
@@ -257,8 +257,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4987372697092614644}
-        m_TargetAssemblyTypeName: LoadGameMenuItem, Assembly-CSharp
+      - m_Target: {fileID: 7335809886181584150}
+        m_TargetAssemblyTypeName: SettingsMenuItem, Assembly-CSharp
         m_MethodName: OnSelectMenuItem
         m_Mode: 1
         m_Arguments:
@@ -281,7 +281,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4987372697092614644
+--- !u!114 &7335809886181584150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,13 +290,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3816273259032634627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7845f3ffcc4b6584ba2306d03e6b5766, type: 3}
+  m_Script: {fileID: 11500000, guid: 073f3b39273c6e547a66d4c0608ac144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSceneName: Game
-  canvas: {fileID: 0}
-  loadingCanvas: {fileID: 0}
-  turnOffObjects: []
+  menu: {fileID: 0}
+  settings: {fileID: 0}
 --- !u!114 &-6174628971161531209
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2048,16 +2048,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4747408830536509346, guid: 06424341fc3755e449bff85aa14b68cc, type: 3}
-      propertyPath: m_text
-      value: 'WASD - Arrows
-
-        Esc - Pause'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4747408830536509346, guid: 06424341fc3755e449bff85aa14b68cc, type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
     - target: {fileID: 4883016585572747116, guid: 06424341fc3755e449bff85aa14b68cc, type: 3}
       propertyPath: settings
       value: 
@@ -2760,6 +2750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2041955634529266789, guid: c6407c41701dc96459a2403f816bffe6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278221055
+      objectReference: {fileID: 0}
     - target: {fileID: 3270123155339548600, guid: c6407c41701dc96459a2403f816bffe6, type: 3}
       propertyPath: levelMusicTracks.Array.size
       value: 2
@@ -2888,6 +2882,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 1734562126}
+    - target: {fileID: 8577638726142719518, guid: c6407c41701dc96459a2403f816bffe6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278221055
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6407c41701dc96459a2403f816bffe6, type: 3}
 --- !u!1001 &6934991256641375125

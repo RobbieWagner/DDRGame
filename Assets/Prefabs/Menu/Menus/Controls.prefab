@@ -302,14 +302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WASD/Arrow Keys - Movement
-
-    E - Interact with Objects
-
-    F - Flashlight
-
-    Shift
-    -Run
+  m_text: 'WASD - Arrows
 
     Esc - Pause'
   m_isRightToLeft: 0
@@ -333,7 +326,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
